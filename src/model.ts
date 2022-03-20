@@ -15,16 +15,18 @@ export type PersonalStats = {
   timeSpentPlugging: Duration;
   firstArrival: Instant;
   latestLeave: Instant;
+  sessionTime: Duration;
   placement: number;
 };
 
 export function getPersonalStatsToday(): Partial<PersonalStats> {
   return {
     timeSpent: "9h 12min",
-    placement: 1,
     timeSpentPlugging: "2min",
     firstArrival: "7:34",
     latestLeave: "14:21",
+    sessionTime: "2h 12min",
+    placement: 1,
   };
 }
 
@@ -43,7 +45,16 @@ export function getPeople(self?: string): Person[] {
     "π",
   ]
     .filter(() => Math.random() > 0.5)
-    .map((name) => ({ name, self: name === self }));
+    .map((name) => {
+      const groups = []
+      if (Math.random() > 0.5) {
+        groups.push("cat")
+      }
+      if (["HOM BRE", "Snek", "BAMF", "Ide"].includes(name)) {
+        groups.push("digit")
+      }
+      return ({ name, self: name === self, groups })
+    });
   shuffle(people);
   return people;
 }

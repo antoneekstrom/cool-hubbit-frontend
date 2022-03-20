@@ -1,8 +1,17 @@
 import { PropsWithChildren } from "react";
+import { appendClassName, BaseProps } from ".";
 
-export function Card({ children }: PropsWithChildren<unknown>) {
+export function Card({
+  children,
+  style,
+  ...props
+}: BaseProps & { style?: Record<string, unknown> }) {
   return (
-    <div className="bg-white w-full min-h-[3rem] rounded-xl">{children}</div>
+    <div
+      className={appendClassName(props, "bg-white w-full rounded-xl")}
+      style={style}>
+      {children}
+    </div>
   );
 }
 
@@ -17,8 +26,10 @@ export type CardHeaderProps = {
 
 export function CardHeader({ title, subtitle }: CardHeaderProps) {
   return (
-    <div className="mb-4">
-      <h1 className="text-xl font-bold leading-snug">{title}</h1>
+    <div className="mb-6">
+      <h1 className="text-xl font-bold leading-snug text-turqoise-70">
+        {title}
+      </h1>
       <p className="text-md leading-none">{subtitle}</p>
     </div>
   );

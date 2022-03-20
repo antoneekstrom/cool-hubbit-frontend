@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ["pages/**/*.tsx"],
+  purge: ["pages/**/*.tsx", "src/**/*.tsx"],
   theme: {
     colors: {
       gray: {
@@ -8,6 +8,7 @@ module.exports = {
       white: "#FFFFFF",
       turqoise: {
         10: "#E7FDFE",
+        "50": "#09cdda",
         70: "#1298A1"
       }
     },
@@ -18,7 +19,8 @@ module.exports = {
     fontSize: {
       md: "1rem",
       lg: "1.1rem",
-      xl: "1.8rem"
+      xl: "1.8rem",
+      "2xl": "3rem"
     },
     fontWeight: {
       regular: 400,
