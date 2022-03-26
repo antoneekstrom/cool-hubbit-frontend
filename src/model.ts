@@ -4,10 +4,18 @@ export type Duration = string;
 
 export type Instant = string;
 
+export type Group = string;
+
 export type Person = {
   name: string;
-  groups?: string[];
+  groups?: Group[];
   self?: boolean;
+};
+
+export type Device = {
+  name: string;
+  mac: string;
+  isHere: boolean;
 };
 
 export type PersonalStats = {
@@ -46,14 +54,14 @@ export function getPeople(self?: string): Person[] {
   ]
     .filter(() => Math.random() > 0.5)
     .map((name) => {
-      const groups = []
+      const groups = [];
       if (Math.random() > 0.5) {
-        groups.push("cat")
+        groups.push("cat");
       }
       if (["HOM BRE", "Snek", "BAMF", "Ide"].includes(name)) {
-        groups.push("digit")
+        groups.push("digit");
       }
-      return ({ name, self: name === self, groups })
+      return { name, self: name === self, groups };
     });
   shuffle(people);
   return people;
